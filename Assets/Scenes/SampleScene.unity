@@ -286,8 +286,8 @@ MonoBehaviour:
   health: 1
   bounceForce: 5
   currentHealth: 0
-  maxHealth: 0
-  damageAmount: 0
+  maxHealth: 3
+  damageAmount: 1
 --- !u!114 &40074193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5596,8 +5596,8 @@ MonoBehaviour:
   health: 1
   bounceForce: 5
   currentHealth: 0
-  maxHealth: 0
-  damageAmount: 0
+  maxHealth: 3
+  damageAmount: 1
 --- !u!114 &889420935
 MonoBehaviour:
   m_ObjectHideFlags: 0
