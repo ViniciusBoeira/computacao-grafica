@@ -9,9 +9,15 @@ public class Enemy : MonoBehaviour {
     private Vector3 currentTarget;
     private SpriteRenderer sr;
 
+    public int health = 1;
+    public float bounceForce = 5f;
+
+    public int currentHealth, maxHealth, damageAmount;
+
 
     void Start() {
         sr=GetComponent<SpriteRenderer>();
+        currentHealth = maxHealth;
     }
     void Update() {
         if (transform.position == pointA.position) {
@@ -24,5 +30,17 @@ public class Enemy : MonoBehaviour {
         }
 
         transform.position = Vector3.MoveTowards(transform.position, currentTarget, Speed*Time.deltaTime);
+    }
+
+    public void TakeDamage() {
+        currentHealth-=damageAmount;
+        if (currentHealth <= 0) {
+            Die();
+        }
+    }
+
+    public void Die() {
+        Debug.Log("Enemy is dead");
+        Destroy(gameObject);
     }
 }
