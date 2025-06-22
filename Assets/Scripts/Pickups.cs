@@ -24,6 +24,7 @@ public class Pickups : MonoBehaviour
     {
         if (collision.gameObject.tag == "Coin")
         {
+            
             coins++;
             scoreText.text = "COINS : " + coins;
             Destroy(collision.gameObject);
