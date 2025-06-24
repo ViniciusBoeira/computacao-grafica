@@ -13,11 +13,17 @@ public class Boss : MonoBehaviour
     public float attackRange;
     public bool isAttacking = false;
 
+    public BossHealthbar bossHealthbar;
+
+    public int currentHealth, maxHealth, damageAmount;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        currentHealth = maxHealth;
         player = GameObject.FindGameObjectWithTag("Player");
         anim = GetComponent<Animator>();
+        bossHealthbar.SetMaxHealth(currentHealth);
     }
 
     // Update is called once per frame
@@ -59,5 +65,17 @@ public class Boss : MonoBehaviour
         anim.SetTrigger("Attack");
         yield return new WaitForSeconds(timeBetweenAttacks);
         isAttacking = false;
+    }
+
+    public void TakeDamage() {
+        currentHealth -= damageAmount;
+        bossHealthbar.SetHealth(currentHealth);
+        if (currentHealth <= 0) {
+            Die();
+        }
+    }
+
+    private void Die() {
+        Destroy(gameObject);
     }
 }

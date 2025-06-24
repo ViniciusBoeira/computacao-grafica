@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public int currentHealth, maxHealth, damageAmount;
+    public int currentHealth, maxHealth;
     public Healthbar healthbar;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -18,7 +18,7 @@ public class PlayerHealth : MonoBehaviour
         
     }
 
-    public void DealDamage()
+    public void DealDamage(int damageAmount)
     {
         currentHealth -= damageAmount;
         healthbar.SetHealth(currentHealth);

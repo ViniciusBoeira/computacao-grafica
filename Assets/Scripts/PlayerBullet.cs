@@ -37,6 +37,15 @@ public class PlayerBullet : MonoBehaviour {
             }
             Destroy(gameObject);
         }
+
+        else if (collision.gameObject.tag=="Boss") {
+            Boss boss = collision.GetComponent<Boss>();
+            if (boss != null) {
+                boss.TakeDamage();
+            }
+            Destroy(gameObject);
+        }
+
     }
 
     public void OnCollisionEnter2D(Collision2D collision) {
