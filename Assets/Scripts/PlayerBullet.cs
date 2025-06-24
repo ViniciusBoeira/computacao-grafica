@@ -8,6 +8,7 @@ public class PlayerBullet : MonoBehaviour {
 
     private Player playerController;
     private GameObject playerObj;
+    private Vector3 _direction;
 
     private void Awake() {
         Destroy(gameObject, 1.5f);
@@ -17,18 +18,17 @@ public class PlayerBullet : MonoBehaviour {
         playerObj = GameObject.FindGameObjectWithTag("Player");
         playerController = playerObj.GetComponent<Player>();
         rb = GetComponent<Rigidbody2D>();
+
+        _direction = playerController.IsFacingRight() ? transform.right : -transform.right;
     }
 
     void Update() {
-        if (playerController.IsFacingRight()) {
-            rb.linearVelocity=transform.right * bulletSpeed;
-        }
-        else {
-            rb.linearVelocity= -transform.right * bulletSpeed;
-        }
+        
+        rb.linearVelocity=_direction * bulletSpeed;
+
         // rb.linearVelocity=transform.right * bulletSpeed;
     }
-
+    
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.gameObject.tag=="Enemy") {
             Enemy enemy = collision.GetComponent<Enemy>();
