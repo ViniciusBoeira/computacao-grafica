@@ -15,11 +15,16 @@ public class Boss : MonoBehaviour
 
     public BossHealthbar bossHealthbar;
 
+    public GameObject victoryPanel;
+
     public int currentHealth, maxHealth, damageAmount;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        if (victoryPanel != null) {
+            victoryPanel.SetActive(false);
+        }
         currentHealth = maxHealth;
         player = GameObject.FindGameObjectWithTag("Player");
         anim = GetComponent<Animator>();
@@ -72,6 +77,11 @@ public class Boss : MonoBehaviour
         bossHealthbar.SetHealth(currentHealth);
         if (currentHealth <= 0) {
             Die();
+            if (victoryPanel != null) {
+                victoryPanel.SetActive(true);
+            }
+            Time.timeScale = 0f;
+
         }
     }
 
