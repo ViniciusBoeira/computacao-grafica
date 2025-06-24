@@ -35,6 +35,7 @@ public class Enemy : MonoBehaviour {
     public void TakeDamage() {
         currentHealth-=damageAmount;
         if (currentHealth <= 0) {
+            AudioManager.instance.PlaySFX(2);
             Die();
         }
     }

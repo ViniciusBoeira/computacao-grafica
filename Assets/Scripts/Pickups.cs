@@ -25,6 +25,7 @@ public class Pickups : MonoBehaviour
         if (collision.gameObject.tag == "Coin")
         {
             coins++;
+            AudioManager.instance.PlaySFX(0);
             scoreText.text = "COINS : " + coins;
             Destroy(collision.gameObject);
         }

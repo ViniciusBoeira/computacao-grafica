@@ -16,6 +16,7 @@ public class PlayerShooting : MonoBehaviour {
 
     void Update() {
         if (Input.GetMouseButtonDown(0) && canShoot) {
+            AudioManager.instance.PlaySFX(4);
             Shoot();
         }
     }
